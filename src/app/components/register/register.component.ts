@@ -36,7 +36,7 @@ export class RegisterComponent {
         // Extract status and error message from the error object
         const status = err.status || 'Unknown';
         const errorMsg = err.error || 'An error occurred';
-        this.message = `Failed! Status: ${status}, Message: ${errorMsg}`;
+        this.message = `Failed! Status: ${status}, Message: ${err.message}`;
       },
     });
   }
