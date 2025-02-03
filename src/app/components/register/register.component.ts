@@ -22,12 +22,12 @@ export class RegisterComponent {
 
 
   onSubmit() {
-    const user = { username: this.username, password: this.password, role: this.role };
+    const user = { username: this.username, password: this.password };
 
     this.authService.register(user).subscribe({
       next: (response) => {
         // Assuming the response body is a string or has a "message" property
-        this.message = `Success! Status: 201, Message: ${response}`;
+        this.message = `${response.message}`;
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 2000); // Redirect after 2 seconds
@@ -35,8 +35,8 @@ export class RegisterComponent {
       error: (err) => {
         // Extract status and error message from the error object
         const status = err.status || 'Unknown';
-        const errorMsg = err.error || 'An error occurred';
-        this.message = `Failed! Status: ${status}, Message: ${err.message}`;
+        const errorMsg = err.error?.message || 'An error occurred';
+        this.message = `Registration failed: ${errorMsg}`;
       },
     });
   }
