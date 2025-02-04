@@ -28,7 +28,8 @@ onSubmit() {
       const token = response.token;  // Now properly extracting from DTO
 
       if (token) {
-        localStorage.setItem('jwt', token);  // Store JWT token
+        sessionStorage.setItem('jwt', token);
+        //localStorage.setItem('jwt', token);  // Store JWT token
         this.message = `Login successful! Redirecting...`;
         setTimeout(() => {
           this.router.navigate(['/messages']);  // Redirect to homepage or dashboard
