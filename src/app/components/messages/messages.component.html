@@ -1,1 +1,7 @@
-<p>messages works!</p>
+<div class="messages-container">
+    <h2>Your Messages</h2>
+    <div class="grid">
+        <app-message-card *ngFor="let message of messages" [message]="message">
+        </app-message-card>
+    </div>
+</div>
