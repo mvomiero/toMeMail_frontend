@@ -19,4 +19,8 @@ export class MessageService {
   getMessages(): Observable<Message[]> {
     return this.http.get<Message[]>(this.apiUrl);
   }
+
+  getMessageById(id: number): Observable<Message> {
+  return this.http.get<Message>(`${this.apiUrl}/${id}`);
+  }
 }

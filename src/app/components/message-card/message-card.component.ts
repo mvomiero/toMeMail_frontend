@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 interface Message {
@@ -16,4 +17,10 @@ interface Message {
 })
 export class MessageCardComponent {
   @Input() message!: Message;
+
+  constructor(private router: Router) {}
+
+  viewMessage() {
+    this.router.navigate(['/messages', this.message.id]);
+  }
 }

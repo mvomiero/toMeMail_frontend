@@ -1,6 +1,5 @@
-<div class="message-card">
+<div class="message-card" (click)="viewMessage()">
     <h3>{{ message.dueDate | date:'yyyy-MM-dd' }}</h3>
     <p>{{ message.content }}</p>
-    <!-- <button (click)="viewMessage()">View</button> -->
 </div>
 

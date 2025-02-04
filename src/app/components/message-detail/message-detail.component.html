@@ -1,0 +1,5 @@
+<div *ngIf="message" class="message-detail">
+    <h2>Message for {{ message.dueDate | date:'yyyy-MM-dd' }}</h2>
+    <p>{{ message.content }}</p>
+    <button routerLink="/messages">Back to Messages</button>
+</div>
