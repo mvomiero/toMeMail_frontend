@@ -12,7 +12,7 @@ interface Message {
   providedIn: 'root'
 })
 export class MessageService {
-  private apiUrl = 'messages';
+  private apiUrl = '/api/messages';
 
   constructor(private http: HttpClient) {}
 
