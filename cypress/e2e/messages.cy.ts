@@ -1,35 +1,38 @@
 describe('Messages Page (Real API)', () => {
   beforeEach(() => {
-    // Step 1: Visit the login page and log in as Alice
-    cy.visit('');
+    // Visit the login page and log in as Alice
     cy.visit('/login');
 
     cy.get('input[name="username"]').type('alice');
     cy.get('input[name="password"]').type('testPassword');
     cy.get('button[type="submit"]').click();
 
-    // Step 2: Ensure login redirects to /messages
+    // Ensure login redirects to /messages
     cy.url().should('include', '/messages');
+
+    // Assert JWT token is stored
+    cy.window().then((win) => {
+      const jwt = win.sessionStorage.getItem('jwt');
+      expect(jwt).to.exist;
+    });
   });
 
   it('should load messages and display them correctly', () => {
-    // Step 3: Visit messages page (after login)
-    cy.visit('/messages');
-
-    // Step 4: Wait for messages to load and validate UI
+    // Ensure messages are displayed
     cy.get('.message-card').should('have.length.greaterThan', 0);
     cy.get('.message-card').first().should('be.visible');
   });
 
   it('should navigate to message details when clicking a message', () => {
-    // Step 3: Visit messages page
-    cy.visit('/messages');
-
-    // Step 4: Click on the first message
+    // Click on the first message
     cy.get('.message-card').first().click();
 
-    // Step 5: Verify navigation to message details
+    // Verify navigation to message details
     cy.url().should('include', '/messages/');
+
+    // Ensure message details are displayed correctly
     cy.get('.message-detail').should('exist');
+    cy.get('.message-detail h2').should('contain', '2025-01-01');
+    cy.get('.message-detail p').should('contain', 'Hello Future Alice!');
   });
 });
