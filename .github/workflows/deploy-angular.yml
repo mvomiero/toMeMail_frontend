@@ -33,4 +33,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "/"  # Root of Angular app
-          output_location: "dist/tome-mail"  # Build output folder
+          output_location: "dist/frontend"  # Build output folder
