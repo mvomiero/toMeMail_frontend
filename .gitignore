@@ -30,3 +30,5 @@ yarn-error.log*
 # Package lock files (if you don't want to track package-lock.json or yarn.lock)
 # package-lock.json
 # yarn.lock
+
+src/environments/environment.ts
