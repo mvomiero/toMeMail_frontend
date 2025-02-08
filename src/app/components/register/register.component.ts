@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -12,29 +13,30 @@ import { CommonModule } from '@angular/common';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-
   username: string = '';
   password: string = '';
-  role: string = '';
+  dateOfBirth: string = ''; // Format: YYYY-MM-DD
+  role: string = 'USER'; // Default role
   message: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) { }
-
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
-    const user = { username: this.username, password: this.password };
+    const user: User = {
+      username: this.username,
+      password: this.password,
+      dateOfBirth: this.dateOfBirth, // Already in "YYYY-MM-DD" format
+      role: this.role
+    };
 
     this.authService.register(user).subscribe({
       next: (response) => {
-        // Assuming the response body is a string or has a "message" property
         this.message = `${response.message}`;
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 2000); // Redirect after 2 seconds
       },
       error: (err) => {
-        // Extract status and error message from the error object
-        const status = err.status || 'Unknown';
         const errorMsg = err.error?.message || 'An error occurred';
         this.message = `Registration failed: ${errorMsg}`;
       },
