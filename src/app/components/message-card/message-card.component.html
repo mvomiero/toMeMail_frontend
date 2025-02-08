@@ -1,5 +1,6 @@
 <div class="message-card" (click)="viewMessage()">
-    <h3>{{ message.dueDate | date:'yyyy-MM-dd' }}</h3>
+    <p><strong>From: your dear {{ message.senderAge }} years-old-self</strong></p>
+    <p><strong>To: your beloved {{ message.recipientAge }} years-old-self</strong></p>
     <p>{{ message.content }}</p>
 </div>
 

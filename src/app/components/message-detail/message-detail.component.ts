@@ -3,12 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MessageService } from '../../services/message.service';
 import { RouterOutlet, RouterLink } from '@angular/router';
-
-interface Message {
-  id: number;
-  content: string;
-  dueDate: string;
-}
+import { Message } from '../../models/message.model';
 
 @Component({
   selector: 'app-message-detail',

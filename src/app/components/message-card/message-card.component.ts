@@ -1,12 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
-interface Message {
-  id: number;
-  content: string;
-  dueDate: string;
-}
+import { Message } from '../../models/message.model';
 
 @Component({
   selector: 'app-message-card',
