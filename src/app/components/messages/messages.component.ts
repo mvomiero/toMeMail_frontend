@@ -2,12 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MessageService } from '../../services/message.service';
 import { MessageCardComponent } from '../message-card/message-card.component';
-
-interface Message {
-  id: number;
-  content: string;
-  dueDate: string;
-}
+import { Message } from '../../models/message.model';
 
 @Component({
   selector: 'app-messages',

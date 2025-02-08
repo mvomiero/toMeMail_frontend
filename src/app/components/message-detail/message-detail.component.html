@@ -1,5 +1,6 @@
 <div *ngIf="message" class="message-detail">
-    <h2>Message for {{ message.dueDate | date:'yyyy-MM-dd' }}</h2>
+    <p><strong>From: your dear {{ message.senderAge }} years-old-self</strong></p>
+    <p><strong>To: your beloved {{ message.recipientAge }} years-old-self</strong></p>
     <p>{{ message.content }}</p>
     <button routerLink="/messages">Back to Messages</button>
 </div>
