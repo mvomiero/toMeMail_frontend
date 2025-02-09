@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { MessageService } from '../../services/message.service';
 import { MessageCardComponent } from '../message-card/message-card.component';
 import { Message } from '../../models/message.model';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-messages',
   standalone: true,
-  imports: [CommonModule, MessageCardComponent],
+  imports: [CommonModule, MessageCardComponent,RouterOutlet, RouterLink],
   templateUrl: './messages.component.html',
   styleUrl: './messages.component.css'
 })
 export class MessagesComponent implements OnInit {
   messages: Message[] = [];
+
 
   constructor(private messageService: MessageService) {}
 
