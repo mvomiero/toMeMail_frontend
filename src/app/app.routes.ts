@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { MessageDetailComponent } from './components/message-detail/message-detail.component';
 import { CreateMessageComponent } from './components/create-message/create-message.component';
+import { AboutComponent } from './components/about/about.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -13,5 +14,6 @@ export const routes: Routes = [
     { path: 'messages', component: MessagesComponent },
     { path: 'messages/create', component: CreateMessageComponent},
     { path: 'messages/:id', component: MessageDetailComponent },
+    { path: 'about', component: AboutComponent }
     
 ];
