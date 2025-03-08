@@ -2,7 +2,7 @@
     <p><strong>Written in {{ getYear(message.creationDate) }} (Age: {{ message.senderAge }})</strong></p>
     <p><strong>For {{ getYear(message.dueDate) }} (Age: {{ message.recipientAge }})</strong></p>
     <p>
-        {{ message.content.length > 100 ? (message.content | slice:0:100) + '...' : message.content }}
+        {{ message.content.length > 70 ? (message.content | slice:0:70) + '...' : message.content }}
     </p>
 </div>
 
