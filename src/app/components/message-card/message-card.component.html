@@ -1,6 +1,9 @@
 <div class="message-card" (click)="viewMessage()">
-    <p><strong>From: your dear {{ message.senderAge }} years-old-self</strong></p>
-    <p><strong>To: your beloved {{ message.recipientAge }} years-old-self</strong></p>
-    <p>{{ message.content }}</p>
+    <p><strong>Written in {{ getYear(message.creationDate) }} (Age: {{ message.senderAge }})</strong></p>
+    <p><strong>For {{ getYear(message.dueDate) }} (Age: {{ message.recipientAge }})</strong></p>
+    <p>
+        {{ message.content.length > 100 ? (message.content | slice:0:100) + '...' : message.content }}
+    </p>
 </div>
+
 

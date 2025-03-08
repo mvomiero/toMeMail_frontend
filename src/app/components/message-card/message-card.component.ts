@@ -18,4 +18,8 @@ export class MessageCardComponent {
   viewMessage() {
     this.router.navigate(['/messages', this.message.id]);
   }
+
+  getYear(dateString: string): number {
+  return new Date(dateString).getFullYear();
+  }
 }

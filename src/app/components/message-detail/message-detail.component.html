@@ -1,6 +1,14 @@
-<div *ngIf="message" class="message-detail">
-    <p><strong>From: your dear {{ message.senderAge }} years-old-self</strong></p>
-    <p><strong>To: your beloved {{ message.recipientAge }} years-old-self</strong></p>
-    <p>{{ message.content }}</p>
-    <button routerLink="/messages">Back to Messages</button>
+<div *ngIf="message as msg; else errorTemplate" class="message-detail">
+    <p><strong>Written in {{ getYear(msg.creationDate) }} (Age: {{ msg.senderAge }})</strong></p>
+    <p><strong>For {{ getYear(msg.dueDate) }} (Age: {{ msg.recipientAge }})</strong></p>
+    <p>{{ msg.content }}</p>
 </div>
+
+<ng-template #errorTemplate>
+    <div class="error-message">
+        <p>{{ errorMessage }}</p>
+        <p *ngIf="dueDate"><strong>{{ dueDate }}</strong></p>
+    </div>
+</ng-template>
+
+<button routerLink="/messages">Back to Messages</button>

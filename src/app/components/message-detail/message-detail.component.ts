@@ -14,6 +14,8 @@ import { Message } from '../../models/message.model';
 })
 export class MessageDetailComponent implements OnInit {
   message: Message | null = null;
+  errorMessage: string | null = null;
+  dueDate: string | null = null;  // ✅ Store due date from backend
 
   constructor(
     private route: ActivatedRoute,
@@ -25,9 +27,27 @@ export class MessageDetailComponent implements OnInit {
 
     if (messageId) {
       this.messageService.getMessageById(messageId).subscribe({
-        next: (data) => this.message = data,
-        error: (err) => console.error('Error fetching message:', err)
+        next: (data) => {
+          this.message = data;
+          this.errorMessage = null;
+          this.dueDate = null;
+        },
+        error: (err) => {
+          if (err.status === 403 && err.error?.dueDate) {
+            this.errorMessage = "This message is locked until its due date:";
+            this.dueDate = err.error.dueDate; 
+          } else {
+            this.errorMessage = "An error occurred while retrieving the message.";
+            this.dueDate = null;
+          }
+          this.message = null;
+        }
       });
     }
+  }
+
+  getYear(dateString: string | null): string {
+    if (!dateString) return "N/A"; 
+    return new Date(dateString).getFullYear().toString();
   }
 }
