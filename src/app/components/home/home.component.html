@@ -1,8 +1,10 @@
 <div class="actions">
     <button routerLink="/register" class="btn">Register</button>
     <button routerLink="/login" class="btn">Login</button>
-    <button (click)="loginAsDemoUser()" class="btn demo-btn">
+    <button (click)="loginAsDemoUser()" class="btn demo-btn" [disabled]="loading">
         Try Demo
         <span class="tooltip">Logs in as Alice and shows demo messages.</span>
     </button>
 </div>
+
+<p *ngIf="message" class="status-message">{{ message }}</p>
